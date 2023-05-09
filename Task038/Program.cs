@@ -2,41 +2,49 @@
 //Найдите разницу между максимальным и минимальным элементов массива.
 
 
-void FillArray(int[] array)
+void FillArray(double[] array)
 {
-int lngt = array.Length;
-int index = 0;                  
-    while (index < lngt)
+    Random rnd = new Random();
+
+    for (int i = 0; i < array.Length; i++)
     {
-    array[index] = new Random().Next(0, 10);
-    index++;
+        array[i] = Math.Round
+        (rnd.Next(-9, 10) + rnd.NextDouble(), 2);
     }
 }
 
-void PrintArray(int[] array)
+void PrintArray(double[] array)
 {
-int lngt = array.Length;
-int index = 0;
-    while (index < lngt)
+    for (int i = 0; i < array.Length; i++)
     {
-    Console.Write($"{array[index]} ");
-    index++;
+        Console.Write($"{array[i]} ");
     }
-Console.WriteLine();
+    Console.WriteLine();
 }
 
-void FindSumOddIn(int[] array)
+void FindDiffMaxMin(double[] array)
 {
-    int sum = 0;
-    for (int index = 1; index < array.Length; index = index + 2)
+    double max = array[0]; double min = array[1];
+
+    if (max < min) min = array[0]; max = array[1];
+    
+    for (int i = 2; i < array.Length; i++)
     {
-        sum = sum + array[index]; 
+        if (array[i] > max) max = array[i];  
+        
+        if (array[i] < min) min = array[i];
     }
-    Console.WriteLine($"Sum of elements with odd indices {sum} ");
+
+    double dif = Math.Round(max - min, 2); 
+    Console.WriteLine($"Difference between minimum and maximum: {dif} ");
 }
 
-
-int[] array = new int [10];
+void Task038()
+{
+double[] array = new double [10];
 FillArray(array);
 PrintArray(array);
-FindSumOddIn(array);
+FindDiffMaxMin(array);
+}
+
+Task038();

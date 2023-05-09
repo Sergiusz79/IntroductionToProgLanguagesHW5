@@ -4,23 +4,18 @@
 
 void FillArray(int[] array)
 {
-int lngt = array.Length;
-int index = 0;                  
-    while (index < lngt)
+Random rand = new Random();    
+    for (int index = 0; index < array.Length; index++)
     {
-    array[index] = new Random().Next(100, 1000);
-    index++;
+    array[index] = rand.Next(100, 1000);
     }
 }
 
 void PrintArray(int[] array)
 {
-int lngt = array.Length;
-int index = 0;
-    while (index < lngt)
+    for (int index = 0; index < array.Length; index++)
     {
     Console.Write($"{array[index]} ");
-    index++;
     }
 Console.WriteLine();
 }
@@ -35,10 +30,12 @@ void FindNumbers(int[] array)
     Console.WriteLine($"Total number of even numbers {count}");
 }
 
-
-
+void Task034()
+{
 int[] array = new int [10];
 FillArray(array);
 PrintArray(array);
 FindNumbers(array);
+}
 
+Task034();
